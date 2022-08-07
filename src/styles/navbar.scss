@@ -1,0 +1,32 @@
+.navbar-wrapper {
+  font-size: 18px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0px;
+  background-color: $dark-green;
+
+  .title {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 150px;
+  }
+
+  .links {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 150px;
+
+    .link {
+      padding: 0px 15px;
+      text-decoration: none;
+      color: $black;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

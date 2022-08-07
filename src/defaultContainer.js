@@ -1,19 +1,16 @@
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
-import ShoppingCart from "./pages/shoppingCart";
 import AllItems from "./pages/allItems";
-import Navbar from "./components/navbar";
-import "./styles/App.scss";
+import ShoppingCart from "./pages/shoppingCart";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <Navbar />
     <Routes>
       <Route path="/" element={<App />} />
-      <Route path="/shopping-cart" element={<ShoppingCart />} />
-      <Route path="/items" element={<AllItems />} />
+      <Route path="expenses" element={<AllItems />} />
+      <Route path="invoices" element={<ShoppingCart />} />
     </Routes>
   </BrowserRouter>
 );

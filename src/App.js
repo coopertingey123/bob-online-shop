@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { Link } from "react-router-dom";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="home-wrapper">
+      <div className="header">
+        <h1>Welcome to Bob's Online Shop</h1>
+      </div>
+      <div className="body">
+        <div className="description">
+          Bob's online shop is the only online shop you'll ever need. We sell{" "}
+          <br />
+          all sorts of items, from sports equipment to flowers and candies.
+          <br />
+          <br />
+          Enjoy browsing Bob's Online Shop!
+        </div>
+
+        <Link className="link" to="/items">
+          Click here to view items for sale
+        </Link>
+      </div>
     </div>
   );
 }
-
-export default App;

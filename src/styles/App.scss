@@ -1,3 +1,19 @@
+$light-pink: #ffa69e;
+$dark-pink: #ff686b;
+$light-green: #a5ffd6;
+$dark-green: #84dcc6;
+$black: #000000;
+$white: #ffffff;
+
+@import "./navbar.scss";
+@import "./home.scss";
+@import "./items.scss";
+
+body {
+  margin: 0;
+  font-family: Verdana, sans-serif;
+}
+
 .App {
   text-align: center;
 }
