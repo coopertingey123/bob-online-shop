@@ -1,0 +1,49 @@
+.single-item-wrapper {
+  .image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+    height: 60%;
+
+    img {
+      width: 450px;
+      height: 345px;
+      object-fit: cover;
+    }
+  }
+
+  .details-wrapper {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: start;
+    height: 300px;
+    padding: 10px 100px;
+
+    .detail {
+      padding: 5px 10px;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+
+    button {
+      background-color: $light-pink;
+      border: none;
+      height: 40px;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      font-family: Verdana, sans-serif;
+
+      &:hover {
+        background-color: $dark-pink;
+        transition: ease-in-out 0.5s;
+        cursor: pointer;
+      }
+    }
+  }
+}
