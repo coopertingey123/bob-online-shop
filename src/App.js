@@ -9,7 +9,6 @@ export default function App() {
       <div className="body">
         <div className="description">
           Bob's online shop is the only online shop you'll ever need. We sell{" "}
-          <br />
           all sorts of items, from sports equipment to flowers and candies.
           <br />
           <br />

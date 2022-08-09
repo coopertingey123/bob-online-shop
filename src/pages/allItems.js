@@ -78,6 +78,8 @@ export default function AllItems() {
 
     if (typeof localCart === "string") {
       setCurrentCart(JSON.parse(localCart));
+    } else if (localCart === null) {
+      setCurrentCart([]);
     } else {
       setCurrentCart(localCart);
     }
