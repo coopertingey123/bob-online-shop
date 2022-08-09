@@ -4,7 +4,7 @@ import SingleItem from "../components/item";
 export default function AllItems() {
   const [items, setItems] = useState([]);
   const [search, setSearch] = useState("");
-  const [currentCart, setCurrentCart] = useState({});
+  const [currentCart, setCurrentCart] = useState();
 
   const getAllItems = async () => {
     await fetch(`http://127.0.0.1:5000/get/items`, {
@@ -52,18 +52,41 @@ export default function AllItems() {
 
   const addToCart = (item) => {
     let addedItemsCart = [];
-    addedItemsCart.push(item);
+
+    // let prevCart = localStorage.getItem("shopping-cart");
+    // let parsedPrevCart = JSON.parse(prevCart);
+
+    // if (parsedPrevCart.length) {
+    //   for (let item of parsedPrevCart) {
+    //     addedItemsCart.push(item);
+    //   }
+    // }
 
     if (currentCart.length) {
       for (let item of currentCart) {
         addedItemsCart.push(item);
       }
     }
+
+    addedItemsCart.push(item);
     setCurrentCart(addedItemsCart);
   };
 
   useEffect(() => {
-    localStorage.setItem("shopping-cart", JSON.stringify(currentCart));
+    let prevLocalCart = localStorage.getItem("shopping-cart");
+    let localCart = JSON.parse(prevLocalCart);
+
+    if (typeof localCart === "string") {
+      setCurrentCart(JSON.parse(localCart));
+    } else {
+      setCurrentCart(localCart);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (currentCart) {
+      localStorage.setItem("shopping-cart", JSON.stringify(currentCart));
+    }
   }, [currentCart]);
 
   return (

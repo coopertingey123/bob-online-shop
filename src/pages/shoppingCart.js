@@ -16,9 +16,13 @@ export default function ShoppingCart() {
   };
 
   useEffect(() => {
-    let localCart = localStorage.getItem("shopping-cart");
-    if (localCart) {
+    let prevLocalCart = localStorage.getItem("shopping-cart");
+    let localCart = JSON.parse(prevLocalCart);
+
+    if (typeof localCart === "string") {
       setCurrentCart(JSON.parse(localCart));
+    } else {
+      setCurrentCart(localCart);
     }
   }, []);
 
