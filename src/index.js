@@ -6,6 +6,9 @@ import AllItems from "./pages/allItems";
 import Navbar from "./components/navbar";
 import "./styles/App.scss";
 
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
@@ -15,5 +18,6 @@ root.render(
       <Route path="/shopping-cart" element={<ShoppingCart />} />
       <Route path="/items" element={<AllItems />} />
     </Routes>
+    <ToastContainer />
   </BrowserRouter>
 );

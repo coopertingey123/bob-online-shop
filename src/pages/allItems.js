@@ -1,10 +1,20 @@
 import { useEffect, useState } from "react";
 import SingleItem from "../components/item";
 
+import { toast } from "react-toastify";
+
 export default function AllItems() {
   const [items, setItems] = useState([]);
   const [search, setSearch] = useState("");
   const [currentCart, setCurrentCart] = useState();
+
+  const notify = () =>
+    toast("Item added to cart!", {
+      position: "bottom-left",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeButton: false,
+    });
 
   const getAllItems = async () => {
     await fetch(`http://127.0.0.1:5000/get/items`, {
@@ -53,15 +63,6 @@ export default function AllItems() {
   const addToCart = (item) => {
     let addedItemsCart = [];
 
-    // let prevCart = localStorage.getItem("shopping-cart");
-    // let parsedPrevCart = JSON.parse(prevCart);
-
-    // if (parsedPrevCart.length) {
-    //   for (let item of parsedPrevCart) {
-    //     addedItemsCart.push(item);
-    //   }
-    // }
-
     if (currentCart.length) {
       for (let item of currentCart) {
         addedItemsCart.push(item);
@@ -70,6 +71,7 @@ export default function AllItems() {
 
     addedItemsCart.push(item);
     setCurrentCart(addedItemsCart);
+    notify();
   };
 
   useEffect(() => {

@@ -2,10 +2,11 @@ import Modal from "react-modal";
 
 Modal.setAppElement("#root");
 
-export default function ItemModal({ modalOpen, details }) {
+export default function ItemModal({ modalOpen, details, setModalOpen }) {
   return (
     <Modal
       isOpen={modalOpen}
+      onRequestClose={() => setModalOpen(false)}
       style={{
         overlay: {},
         content: {
