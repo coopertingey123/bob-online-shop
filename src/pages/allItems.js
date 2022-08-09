@@ -4,6 +4,7 @@ import SingleItem from "../components/item";
 export default function AllItems() {
   const [items, setItems] = useState([]);
   const [search, setSearch] = useState("");
+  const [currentCart, setCurrentCart] = useState({});
 
   const getAllItems = async () => {
     await fetch(`http://127.0.0.1:5000/get/items`, {
@@ -43,9 +44,27 @@ export default function AllItems() {
 
   const renderItems = () => {
     return items.map((item) => {
-      return <SingleItem key={item.item_id} details={item} />;
+      return (
+        <SingleItem key={item.item_id} details={item} addToCart={addToCart} />
+      );
     });
   };
+
+  const addToCart = (item) => {
+    let addedItemsCart = [];
+    addedItemsCart.push(item);
+
+    if (currentCart.length) {
+      for (let item of currentCart) {
+        addedItemsCart.push(item);
+      }
+    }
+    setCurrentCart(addedItemsCart);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("shopping-cart", JSON.stringify(currentCart));
+  }, [currentCart]);
 
   return (
     <div className="all-items-wrapper">
