@@ -74,6 +74,41 @@ export default function AllItems() {
     notify();
   };
 
+  const handleFilter = (filter) => {
+    let itemsToBeFiltered = [...items];
+
+    switch (filter) {
+      case "high-priority":
+        const lowToHighPriority = itemsToBeFiltered.sort(
+          (a, b) => a.priority - b.priority
+        );
+        setItems(lowToHighPriority);
+        break;
+      case "a-to-z":
+        const aToZ = itemsToBeFiltered.sort((a, b) =>
+          a.name > b.name ? 1 : -1
+        );
+        setItems(aToZ);
+        break;
+      case "z-to-a":
+        const zToA = itemsToBeFiltered.sort((a, b) =>
+          a.name < b.name ? 1 : -1
+        );
+        setItems(zToA);
+        break;
+      case "low-to-high":
+        const lowToHigh = itemsToBeFiltered.sort((a, b) => a.cost - b.cost);
+        setItems(lowToHigh);
+        break;
+      case "high-to-low":
+        const highToLow = itemsToBeFiltered.sort((a, b) => b.cost - a.cost);
+        setItems(highToLow);
+        break;
+      default:
+        break;
+    }
+  };
+
   useEffect(() => {
     let prevLocalCart = localStorage.getItem("shopping-cart");
     let localCart = JSON.parse(prevLocalCart);
@@ -105,6 +140,16 @@ export default function AllItems() {
             onChange={(e) => setSearch(e.target.value)}
           />{" "}
           <button onClick={handleSearch}>Search</button>
+        </div>
+        <div className="filter">
+          Filter products:
+          <select onChange={(e) => handleFilter(e.target.value)}>
+            <option value="high-priority">High Priority</option>
+            <option value="a-to-z">Name A to Z</option>
+            <option value="z-to-a">Name Z to A</option>
+            <option value="low-to-high">Price Low to High</option>
+            <option value="high-to-low">Price High to Low</option>
+          </select>
         </div>
       </div>
       <div className="items-wrapper">{renderItems()}</div>

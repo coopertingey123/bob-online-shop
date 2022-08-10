@@ -7,6 +7,8 @@
     padding: 30px 0px;
 
     .search {
+      padding-bottom: 10px;
+
       input {
         width: 250px;
         border-radius: 5px;
@@ -29,6 +31,17 @@
           transition: ease-in-out 0.5s;
           cursor: pointer;
         }
+      }
+    }
+
+    .filter {
+      select {
+        width: 200px;
+        border-radius: 5px;
+        height: 25px;
+        border: 1px solid $black;
+        font-family: Verdana, sans-serif;
+        margin: 0px 5px;
       }
     }
   }
