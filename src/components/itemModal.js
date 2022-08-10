@@ -44,9 +44,6 @@ export default function ItemModal({ modalOpen, details, setModalOpen }) {
             <div className="detail">Other: {details.other}</div>
           ) : null}
         </div>
-        <div className="buttons">
-          <button> + Add to shopping cart</button>
-        </div>
       </div>
     </Modal>
   );
